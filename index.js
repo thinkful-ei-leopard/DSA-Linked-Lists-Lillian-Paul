@@ -99,17 +99,36 @@ class LinkedList {
       this.insertFirst(item);
     }
 
-    console.log(prevItem);
-    let tempNode = this.head;
+    //finds where previous value is the previous item, sets the previous pointer to a new node with the old previous pointer used in the new node
+    let nextNode = this.head;
     let previousNode = this.head;
-    //prevItem = 'Apollo' as a string!
-    while(tempNode.next.value !== prevItem) {
-      previousNode = tempNode;
-      tempNode = tempNode.next;
+    while(previousNode.value !== prevItem) {
+      previousNode = nextNode;
+      nextNode = previousNode.next;
+    }
+    previousNode.next = new _Node(item, previousNode.next);
+  }
+
+  insertAt(item, index){
+    //if you're inserting at the front
+    if(index === 0){
+      this.insertFirst(item);
     }
 
-    previousNode.next = new _Node(item, tempNode.next);
+    /* while you're in a valid node, check to see if it's the position before index, then point to new node, which points at old node's pointer */ 
+    let currentNode = this.head;
+    let i = 0;
+    while((currentNode !== null) && (i < index - 1)){
+      currentNode = currentNode.next;
+      i++;
+    }
+    if(currentNode === null){
+      return undefined;
+    } else {
+      currentNode.next = new _Node(item, currentNode.next);
+    }
   }
+
 
 }
 
@@ -118,19 +137,18 @@ class LinkedList {
 function main(){
   const SLL = new LinkedList();
 
-  SLL.insertFirst('Starbuck');
-  SLL.insertFirst('Husker');
-  SLL.insertFirst('Helo');
-  SLL.insertFirst('Boomer');
-  SLL.insertFirst('Apollo');
-
-  SLL.insertLast('Tauhida');
-
+  //2
+  // SLL.insertFirst('Starbuck');
+  // SLL.insertFirst('Husker');
+  // SLL.insertFirst('Helo');
+  // SLL.insertFirst('Boomer');
+  // SLL.insertFirst('Apollo');
+  // SLL.insertLast('Tauhida');
   // SLL.remove('squirrel');
-
-  SLL.insertBefore('Athena', 'Boomer');
-
-  SLL.insertAfter('Hotdog', 'Apollo');
+  // SLL.insertBefore('Athena', 'Boomer');
+  // SLL.insertAfter('Hotdog', 'Helo');
+  // SLL.insertAt('Kat', 2);
+  // SLL.remove('Tauhida');
 
   return SLL;
 }
