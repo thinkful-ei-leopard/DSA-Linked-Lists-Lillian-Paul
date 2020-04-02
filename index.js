@@ -155,13 +155,13 @@ main();
 
 // .3 --> Helper functions
 
-function display() {
-  let currentNode = SLL.head;
+function display(list) {
+  let currentNode = list.head;
   while (currentNode !== null) {
     console.log(currentNode.value);
     currentNode = currentNode.next;
   }
-  return SLL;
+  return list;
 }
 
 function size() {
@@ -214,3 +214,24 @@ function findLast() {
 
 
 /* 4 skips over duplicates in a list, O(n^2) maybe O(n log n)*/
+
+//5
+
+function reverse(list){
+  let prevNode = null;
+  let currentNode = list.head;
+  let nextNode = null;
+
+  while (currentNode !== null) {
+    nextNode = currentNode.next;
+    currentNode.next = prevNode;
+    prevNode = currentNode;
+    currentNode = nextNode;
+  }
+  list.head = prevNode;
+  display(list);
+  return list;
+  
+}
+
+console.log(reverse(SLL));
