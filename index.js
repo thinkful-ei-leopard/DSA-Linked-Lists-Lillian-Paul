@@ -140,6 +140,7 @@ function main() {
   SLL.insertFirst('Helo');
   SLL.insertFirst('Boomer');
   SLL.insertFirst('Apollo');
+  SLL.insertFirst('Apollo');
   // SLL.insertLast('Tauhida');
   // SLL.remove('squirrel');
   SLL.insertBefore('Athena', 'Boomer');
@@ -210,3 +211,6 @@ function findLast() {
 // console.log(isEmpty());
 // console.log(findPrevious('Husker'));
 // console.log(findLast());
+
+
+/* 4 skips over duplicates in a list, O(n^2) maybe O(n log n)*/
