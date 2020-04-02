@@ -83,14 +83,31 @@ class LinkedList {
       this.insertFirst(item);
     }
 
-    console.log(this.head);
+    //finds the spot where the next node === the value of nextItem
     let tempNode = this.head;
-    console.log(tempNode);
     let previousNode = this.head;
     while(tempNode.next.value !== nextItem) {
       previousNode = tempNode;
       tempNode = tempNode.next;
     }
+    previousNode.next = new _Node(item, tempNode.next);
+  }
+
+  insertAfter(item, prevItem){
+    // if the list is empty
+    if (!this.head) {
+      this.insertFirst(item);
+    }
+
+    console.log(prevItem);
+    let tempNode = this.head;
+    let previousNode = this.head;
+    //prevItem = 'Apollo' as a string!
+    while(tempNode.next.value !== prevItem) {
+      previousNode = tempNode;
+      tempNode = tempNode.next;
+    }
+
     previousNode.next = new _Node(item, tempNode.next);
   }
 
@@ -112,6 +129,8 @@ function main(){
   // SLL.remove('squirrel');
 
   SLL.insertBefore('Athena', 'Boomer');
+
+  SLL.insertAfter('Hotdog', 'Apollo');
 
   return SLL;
 }
