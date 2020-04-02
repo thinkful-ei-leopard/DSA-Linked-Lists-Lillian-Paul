@@ -212,12 +212,11 @@ function findLast() {
 // console.log(findPrevious('Husker'));
 // console.log(findLast());
 
-
 /* 4 skips over duplicates in a list, O(n^2) maybe O(n log n)*/
 
 //5
 
-function reverse(list){
+function reverse(list) {
   let prevNode = null;
   let currentNode = list.head;
   let nextNode = null;
@@ -231,32 +230,113 @@ function reverse(list){
   list.head = prevNode;
   display(list);
   return list;
-  
 }
 
 // console.log(reverse(SLL));
 
-function thirdFromEnd (list) {
-let currentNode = list.head;
-let length = 1;
-let counter = 1;
+function thirdFromEnd(list) {
+  let currentNode = list.head;
+  let length = 1;
+  let counter = 1;
 
-while (currentNode.next !== null) {
-  currentNode = currentNode.next;
-  length++;
+  while (currentNode.next !== null) {
+    currentNode = currentNode.next;
+    length++;
+  }
+
+  currentNode = list.head;
+
+  while (currentNode !== null && counter !== length - 2) {
+    counter++;
+    currentNode = currentNode.next;
+  }
+
+  return currentNode;
 }
 
-currentNode = list.head
+// console.log(thirdFromEnd(SLL));
 
-while (currentNode !== null && counter !== length-2) {
-  counter++;
-  currentNode = currentNode.next;
+// display(SLL)
+
+//7
+function middle(list) {
+  let currentNode = list.head;
+  let length = 1;
+  let counter = 1;
+
+  while (currentNode.next !== null) {
+    currentNode = currentNode.next;
+    length++;
+  }
+
+  currentNode = list.head;
+
+  while (currentNode !== null && counter !== Math.floor(length / 2)) {
+    counter++;
+    currentNode = currentNode.next;
+  }
+
+  return currentNode;
 }
 
-return currentNode;
+//display(SLL);
+//console.log(middle(SLL));
 
+//8
+
+function makeCycleList() {
+  const cycleList = new LinkedList();
+
+  cycleList.insertFirst('last');
+  cycleList.insertFirst('middle');
+  // cycleList.insertFirst('first')
+
+  let currentNode = cycleList.head;
+  let prevNode;
+
+  while (currentNode.next !== null) {
+    prevNode = currentNode;
+    currentNode = currentNode.next;
+  }
+  currentNode.next = prevNode;
+
+  return cycleList;
 }
 
-console.log(thirdFromEnd(SLL));
+const cycleList = makeCycleList();
+console.log(cycleList);
 
-display(SLL)
+
+function cycleTest(list, currentNode=list.head) {
+  // let prevNode;
+  // if(currentNode === null){
+  //   return 'Doesn;t have a cycle'
+  // }
+  // if(currentNode.next === prevNode) {
+  //   return 'Has a cycle';
+  // }
+
+  // cycleTest(list, currentNode.next);
+  
+  // prevNode = currentNode;
+
+  while(current){
+    increment
+    while(node !== current){
+      return if true
+    }
+  }
+  
+  //let currentNode = list.head;
+  // while (currentNode.next !== null) {
+  //   currentNode = currentNode.next;
+
+  //   if ()
+  // }
+
+  // if (currentNode.next !== null) {
+  //   return true;
+  // }
+}
+
+console.log(cycleTest(cycleList));
