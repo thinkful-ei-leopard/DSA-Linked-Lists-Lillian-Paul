@@ -234,4 +234,29 @@ function reverse(list){
   
 }
 
-console.log(reverse(SLL));
+// console.log(reverse(SLL));
+
+function thirdFromEnd (list) {
+let currentNode = list.head;
+let length = 1;
+let counter = 1;
+
+while (currentNode.next !== null) {
+  currentNode = currentNode.next;
+  length++;
+}
+
+currentNode = list.head
+
+while (currentNode !== null && counter !== length-2) {
+  counter++;
+  currentNode = currentNode.next;
+}
+
+return currentNode;
+
+}
+
+console.log(thirdFromEnd(SLL));
+
+display(SLL)
