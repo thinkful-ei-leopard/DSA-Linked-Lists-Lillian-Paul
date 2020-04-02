@@ -1,3 +1,4 @@
+'use strict';
 // QUESTION 1
 
 class _Node {
@@ -75,4 +76,44 @@ class LinkedList {
     }
     previousNode.next = currNode.next;
   }
+
+  insertBefore(item, nextItem){
+    // if the list is empty
+    if (!this.head) {
+      this.insertFirst(item);
+    }
+
+    console.log(this.head);
+    let tempNode = this.head;
+    console.log(tempNode);
+    let previousNode = this.head;
+    while(tempNode.next.value !== nextItem) {
+      previousNode = tempNode;
+      tempNode = tempNode.next;
+    }
+    previousNode.next = new _Node(item, tempNode.next);
+  }
+
 }
+
+
+
+function main(){
+  const SLL = new LinkedList();
+
+  SLL.insertFirst('Starbuck');
+  SLL.insertFirst('Husker');
+  SLL.insertFirst('Helo');
+  SLL.insertFirst('Boomer');
+  SLL.insertFirst('Apollo');
+
+  SLL.insertLast('Tauhida');
+
+  // SLL.remove('squirrel');
+
+  SLL.insertBefore('Athena', 'Boomer');
+
+  return SLL;
+}
+
+console.log(main());
